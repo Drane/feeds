@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<composite:interface>
+		<composite:attribute name="ondragenter"/>
+		<composite:attribute name="ondragover"/>
+		<composite:attribute name="ondragleave"/>
+		<composite:attribute name="ondrop"/>
+		<composite:attribute name="render"/>
+		<composite:attribute name="payload"/>
+		<composite:attribute name="payloadType"/>
+	</composite:interface>
+	
+	<composite:implementation>
+   	    <h:outputScript library="javax.faces" name="jsf.js" target="head" />
+        <h:outputScript library="html5" name="drop.js" target="head" />
+        
+		<div id="#{cc.id}" ondragenter="#{cc.attrs.ondragenter}"
+		                   ondrop="#{cc.attrs.ondrop}"
+		                   ondragover="#{cc.attrs.ondragover}"
+		                   ondragleave="#{cc.attrs.ondragleave}">
+		                   
+		  <composite:insertChildren />
+		    
+		  <h:form id="form">
+    	    <h:inputText id="payload" 
+    	              value="#{cc.attrs.payload}" 
+    	              style="display: none"/>	
+    	  </h:form>
+    	  
+   	    </div>
+      
+   	    <script> html5.jsf.init("#{cc.id}", 
+   	    	    	            "#{cc.attrs.payloadType}", 
+   	    	    	            "#{cc.attrs.render}"); </script>
+	</composite:implementation>
+</html>

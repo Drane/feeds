@@ -1,0 +1,101 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+  <script>
+    function changingFeed(data) {
+     if (data.status == "begin") {  
+    	 $('feedHeading').hide();
+    	 $('channelImage').hide();
+       $('busyAnimation').show();       
+     }
+     if (data.status == "success") {
+       $('content').highlight();
+       $('feedHeading').show();
+       $('channelImage').show();
+       $('busyAnimation').hide();                
+     }
+    }
+  </script>
+  
+  
+  <h:outputScript library="javascript" name="prototype.js" target="head"/>
+  <h:outputScript library="javascript" name="scriptaculous.js" target="head"/>
+  <h:outputScript library="javascript" name="effects.js" target="head"/>
+  
+  <h:form id="rssFeedForm" prependId="false">
+    <h:panelGrid columns="1">
+      <f:ajax render=":items :feedHeading :channelImage" onevent="changingFeed">
+       <h:commandLink value="Apple"
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://rss.news.yahoo.com/rss/applecomputer', 'Apple Computer')}"/>
+         
+       <h:commandLink value="Movies" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://rss.news.yahoo.com/rss/movies', 'Movies')}"/>
+   
+       <h:commandLink value="Security" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://rss.news.yahoo.com/rss/security', 'Computer security')}"/>
+   
+       <h:commandLink value="Software" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://rss.news.yahoo.com/rss/software', 'Software')}"/>
+   
+       <h:commandLink value="Video games" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://rss.news.yahoo.com/rss/videogames', 'Video games')}"/>
+
+       <h:commandLink value="NPR Technology" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://www.npr.org/rss/rss.php?id=1019', 'Technology')}"/>
+
+       <h:commandLink value="NPR Science" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://rss.sciam.com/ScientificAmerican-News', 'Science')}"/>
+
+       <h:commandLink value="NPR Games and humour" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://www.npr.org/rss/rss.php?id=1052', 'Games and humour')}"/>
+
+       <h:commandLink value="Geek tech" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://feeds.pcworld.com/pcworld/blogs/geektech', 'Geek tech')}"/>
+
+       <h:commandLink value="Recipes" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://rss.allrecipes.com/daily.aspx?hubID=80', 'Recipes')}"/>
+
+       <h:commandLink value="Drinks" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://www.drinknation.com/rss/newest', 'Drinks: Top 10 of the week')}"/>
+	  </f:ajax>
+	  <br/><br/>
+	  
+	  <ui:remove>	    
+	  Enter a URL: 
+	  <h:inputText id="feed" value="#{rssFeed.feed}" size="23"
+	    valueChangeListener="#{rssFeed.feedInputChanged}">
+	    <f:ajax event="keyup" render="addButton" onevent="changingFeed"/>
+	  </h:inputText>
+	      
+	  <h:panelGrid columns="2">
+		<h:commandButton id="button" value="#{msgs.goButtonText}" 
+		  style="font-family:Palatino;font-style:italic"
+		  action="#{rssFeed.fetch()}">
+		        
+		  <f:ajax render=":items :feedHeading"/>
+		        
+		</h:commandButton>
+		      
+		<h:commandButton id="addButton" value="Add URL to list" 
+		  disabled="true"/>
+		  
+	  </h:panelGrid>
+	  </ui:remove>
+	                      
+    </h:panelGrid>         
+  </h:form>
+  
+</ui:composition>

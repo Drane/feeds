@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:h5="http://java.sun.com/jsf/composite/html5">
+
+	<script>
+	  	function dragenter(event) { /* Implement as desired */ }
+	  	function dragleave(event) { /* Implement as desired */ }
+	  	function dragover(event)  { /* Implement as desired */ }
+	  	function drop(event)      { /* Implement as desired */ }
+    </script>
+
+	<h5:drop id="dropzone" payload="#{dragDrop.payload}" render="@this"
+		ondragover="dragover(event)"
+		ondragenter="dragenter(event)" 
+		ondragleave="dragleave(event)"
+		ondrop="drop(event)">
+
+		<div class="welcomeImage">
+		    <h:graphicImage id="welcomeImage" 
+		    	library="images" name="cloudy.gif"/>
+		</div>
+			
+		<br />
+
+		<div class="savedItems">
+	 	    <ui:repeat value="#{rssFeed.savedItems}" var="item">
+	 	      <div class="savedLink">
+		 	    <a href="#{item.link}">
+		 	  	  #{ fn:substring(item.title, 0, 25) } ...
+		 	  	</a>
+		 	  	
+		 	  	<br/>
+	 	    </div>
+		  </ui:repeat>		
+		</div>
+
+	</h5:drop>
+</ui:composition>

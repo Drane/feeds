@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:util="http://java.sun.com/jsf/composite/util">
+  
+  <util:login loginPrompt="#{msgs.loginPrompt}"
+               namePrompt="#{msgs.namePrompt}"
+           passwordPrompt="#{msgs.passwordPrompt}"
+          loginButtonText="#{msgs.loginButtonText}"
+              loginAction="#{user.login}"          
+              managedBean="#{user}"/>
+
+</ui:composition>

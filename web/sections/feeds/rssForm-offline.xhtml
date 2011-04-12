@@ -1,0 +1,98 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    
+  <h:outputScript library="javascript" name="prototype.js" target="head"/>
+  <h:outputScript library="javascript" name="scriptaculous.js" target="head"/>
+  <h:outputScript library="javascript" name="effects.js" target="head"/>
+  
+  <script>
+  function changingFeed(data) {
+    if (data.status == "begin") {  
+      $('feedHeading').hide();
+      $('channelImage').hide();
+      $('busyAnimation').show();       
+    }
+    if (data.status == "success") {
+      $('content').highlight();
+      $('feedHeading').show();
+      $('channelImage').show();
+      $('busyAnimation').hide();                
+    }
+   }
+  </script>
+  
+  <h:form prependId="false">
+    <h:panelGrid columns="1">
+    
+      <f:ajax render=":items :feedHeading :channelImage" onevent="changingFeed">	  
+       <h:commandLink value="Apple"
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/apple.rss', 'Apple Computer')}"/>
+         
+       <h:commandLink value="Movies" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/movies.rss', 'Movies')}"/>
+   
+       <h:commandLink value="Security" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/security.rss', 'Computer security')}"/>
+   
+       <h:commandLink value="Software" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/software.rss', 'Software')}"/>
+   
+       <h:commandLink value="Video games" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/games.rss', 'Video games')}"/>
+
+       <h:commandLink value="NPR Technology" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/technology.rss', 'Technology')}"/>
+
+       <h:commandLink value="NPR Science" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/science.rss', 'Science')}"/>
+
+       <h:commandLink value="NPR Games and humour" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/humour.rss', 'Games and humour')}"/>
+
+       <h:commandLink value="Geek tech" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/geektech.rss', 'Geek tech')}"/>
+
+       <h:commandLink value="Recipes" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/recipes.rss', 'Recipes')}"/>
+
+       <h:commandLink value="Drinks" 
+         style="font-family:Palatino;font-style:italic"
+         action="#{rssFeed.fetch('http://localhost:8080/feeds/resources/rss/drinks.rss', 'Drinks: Top 10 of the week')}"/>
+	    </f:ajax>
+	  <br/><br/>
+	    
+	  Enter a URL: 
+	  <h:inputText id="feed" value="#{rssFeed.feed}" size="30"
+	    valueChangeListener="#{rssFeed.feedInputChanged}">
+	    <f:ajax event="keyup" render="addButton" onevent="changingFeed"/>
+	  </h:inputText>
+	      
+	  <h:panelGrid columns="2">
+		<h:commandButton id="button" value="#{msgs.goButtonText}" 
+		  style="font-family:Palatino;font-style:italic"
+		  action="#{rssFeed.fetch()}">
+		        
+		  <f:ajax render=":items :feedHeading"/>
+		        
+		</h:commandButton>
+		      
+		<h:commandButton id="addButton" value="Add URL to list" 
+		  disabled="true"/>
+		  
+	  </h:panelGrid>                    
+    </h:panelGrid>         
+  </h:form>
+  
+</ui:composition>

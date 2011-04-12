@@ -1,0 +1,153 @@
+a {
+  color: #22e;
+  -webkit-transition: color 0.5s ease-in;
+}
+
+a:hover {
+  color: #f00;
+}
+
+.pageHeading {
+  padding: 20px;
+  margin-bottom: 10px;
+  background: #dddddd;
+  border: 1px solid #cccccc;
+  font-size: 1.4em;
+  font-style: italic;
+  font-family: Palatino;
+  right: 20px;
+  text-align: center;
+}
+
+div.planetImage {
+  margin-top: 10px;
+  text-align: center;
+} 
+
+.zoomPrompt {
+  padding-right: 10px;
+  margin-bottom: 10px;
+  padding-top: 10px; 
+  font-size: 14px;
+}
+
+.promptTop {
+  font-size: 1.15em;
+  margin-left: 5px;
+  margin-bottom: 20px;
+  font-family: Palatino;
+  font-style: italic;
+} 
+
+.explanation {
+  padding: 20px;
+  font-family: Palatino;
+  font-style: italic;
+  color: blue;
+}
+
+.prompt {
+  font-size: 1.15em; 
+  margin-left: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: Palatino;
+}
+
+.welcomeGreeting {
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.welcomeImage {
+  margin-top: 10px;
+  text-align: center; 
+}
+
+.savedItems {
+	text-align: center;
+}
+
+.savedLink {
+	margin-bottom: 10px;
+}
+
+.menuLeft {
+  border: thin solid lightGray;
+  position: absolute;
+  left: 10px;
+  height: 80%;
+  width: 185px;
+  background: #eeeeee;
+  padding: 10px;
+}
+ 
+.menuLeftText {
+  margin-top: 10px;
+  font-family: Helvetica; 
+  text-align: center; 
+  width: 100%;
+}
+
+.menuRight {
+  border: thin solid lightGray;
+  background: #efefef;
+  position:absolute;
+  left: 825px;
+  right: 10px;
+  height: 80%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.content {
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  border: thin solid lightGray;
+  background: #fefeef;	
+  position:absolute;
+  left: 225px; 
+  height:80%;
+  width: 550px;
+}
+
+.menuAndContent {
+  width: 100%;
+  height: 100%;
+}
+
+.placesSearchForm {
+  font-style: italic; 
+  font-family: Palatino; 
+  margin-bottom: 15px;
+  margin-left: 5%;
+}
+
+.placesSearchFormHeading {
+  text-align: center; 
+  width: 100%;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  font-size:1.15em;
+} 
+
+.error {
+  color: red;
+}
+
+.icon {
+  margin: 10px;
+  border: none;
+}
+
+.placeHeading {
+	margin-top: 10px;margin-right:10px; padding: 10px; float: left;border:thin solid lightGray;
+}
+
+.weather {
+    border:thin solid lightGray;margin: 5px;padding: 5px;
+}   
+.map {
+	border:thin solid lightGray;margin: 5px;padding: 5px;
+}	

@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:places="http://java.sun.com/jsf/composite/places">
+
+  <h:graphicImage id="channelImage" url="#{rssFeed.channel.RSSImage.url}"/>
+  
+  <br/>
+  
+  <h:outputText id="feedHeading" value="#{rssFeed.displayName}" 
+    style="font-size: 0.85em"/>
+
+  <h:graphicImage id="busyAnimation" 
+      library="images" 
+         name="orange-barber-pole.gif"
+	    style="display: none"/>
+  
+</ui:composition>
